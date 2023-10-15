@@ -23,6 +23,6 @@ public class FileManipulationImpl implements FileManipulation {
         }catch (IOException e){
             e.printStackTrace();
         }
-
+        fileRepository.save(voenmehFile);
     }
 }
