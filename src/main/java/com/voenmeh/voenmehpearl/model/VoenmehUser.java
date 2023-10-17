@@ -3,10 +3,11 @@ package com.voenmeh.voenmehpearl.model;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @NoArgsConstructor
@@ -14,7 +15,7 @@ import java.util.Set;
 @Table(name = "voenmehUser",schema = "public")
 @Getter
 @Setter
-public class VoenmehUser {
+public class VoenmehUser implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +23,7 @@ public class VoenmehUser {
     private Long userId;
 
     @Column(name = "userName",nullable = false)
-    private String userName;
+    private String email;
 
     @Column(name = "userPassword",nullable = false)
     private String password;
@@ -38,4 +39,37 @@ public class VoenmehUser {
     @CreatedDate
     @Column(name = "craetionDateTime",nullable = false)
     private Date creationDateTime;
+    @Enumerated(EnumType.STRING)
+    private VoenmehRole userRole;
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(userRole.name()));
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
