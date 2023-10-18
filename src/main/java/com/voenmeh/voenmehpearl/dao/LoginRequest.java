@@ -1,4 +1,4 @@
-package com.voenmeh.voenmehpearl.model;
+package com.voenmeh.voenmehpearl.dao;
 
 import lombok.Data;
 

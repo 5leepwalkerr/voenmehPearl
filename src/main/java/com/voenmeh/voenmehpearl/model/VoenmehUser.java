@@ -15,6 +15,7 @@ import java.util.*;
 @Table(name = "voenmehUser",schema = "public")
 @Getter
 @Setter
+@Builder
 public class VoenmehUser implements UserDetails {
 
     @Id
