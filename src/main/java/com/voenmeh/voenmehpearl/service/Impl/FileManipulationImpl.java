@@ -22,6 +22,7 @@ public class FileManipulationImpl implements FileManipulation {
             voenmehFile.setFileData(uploadFile.getBytes());
         }catch (IOException e){
             e.printStackTrace();
+            // TODO:   Добавить вывод ошибки
         }
         fileRepository.save(voenmehFile);
     }
