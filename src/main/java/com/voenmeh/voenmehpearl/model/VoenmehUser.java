@@ -22,8 +22,10 @@ public class VoenmehUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userId",nullable = false)
     private Long userId;
+    @Column(name = "userName",nullable = false,unique = true)
+    private String userName;
 
-    @Column(name = "userName",nullable = false)
+    @Column(name = "userName",nullable = false,unique = true)
     private String email;
 
     @Column(name = "userPassword",nullable = false)
