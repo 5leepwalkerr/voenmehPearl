@@ -12,7 +12,7 @@ import java.util.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "voenmehUser",schema = "public")
+@Table(name = "voenmehUser",schema = "public",uniqueConstraints = {@UniqueConstraint(columnNames = {"userName","email"})})
 @Getter
 @Setter
 @Builder
