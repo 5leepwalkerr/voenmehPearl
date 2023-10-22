@@ -31,7 +31,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         var user = VoenmehUser.builder()
                 .userName(request.getUserName())
                 .email(request.getEmail())
-                .password(request.getPassword())
+                .password(passwordEncoder.encode(request.getPassword()))
                 .userRole(VoenmehRole.USER)
                 .build();
         voenmehUserRepository.save(user);
