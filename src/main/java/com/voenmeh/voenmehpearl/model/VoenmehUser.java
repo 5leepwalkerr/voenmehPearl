@@ -25,7 +25,7 @@ public class VoenmehUser implements UserDetails {
     @Column(name = "userName",nullable = false,unique = true)
     private String userName;
 
-    @Column(name = "userName",nullable = false,unique = true)
+    @Column(name = "email",nullable = false,unique = true)
     private String email;
 
     @Column(name = "userPassword",nullable = false)
@@ -42,7 +42,9 @@ public class VoenmehUser implements UserDetails {
     @CreatedDate
     @Column(name = "craetionDateTime",nullable = false)
     private Date creationDateTime;
+
     @Enumerated(EnumType.STRING)
+    @Column(name = "userRole",nullable = false)
     private VoenmehRole userRole;
 
 
