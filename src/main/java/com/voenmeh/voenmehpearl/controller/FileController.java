@@ -19,9 +19,10 @@ public class FileController {
 
     @Autowired
     private FileManipulation fileManipulation;
-    @PostMapping
+    @PostMapping("upload ")
     public ResponseEntity<?> uploadFile(@RequestParam("uploadFile")MultipartFile uploadFile){
         fileManipulation.uploadFile(uploadFile);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
 }

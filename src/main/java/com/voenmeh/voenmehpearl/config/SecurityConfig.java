@@ -38,6 +38,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/pearl/file/**")
                         .authenticated())
+                .authorizeHttpRequests(request -> request
+                        .requestMatchers("/pearl/auth/**")
+                        .permitAll())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
