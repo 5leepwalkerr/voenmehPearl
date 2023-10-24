@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.management.relation.Role;
+import java.util.Date;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
@@ -33,6 +34,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .userName(request.getUserName())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .userRole(VoenmehRole.USER)
+                .creationDateTime(new Date())
                 .build();
         voenmehUserRepository.save(user);
         var jwt = jwtService.generateToken(user);
