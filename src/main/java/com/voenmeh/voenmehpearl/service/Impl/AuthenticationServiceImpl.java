@@ -29,8 +29,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public JwtAuthenticationResponse signUp(SignUpRequest request) {
         var user = VoenmehUser.builder()
-                .userName(request.getUserName())
                 .email(request.getEmail())
+                .userName(request.getUserName())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .userRole(VoenmehRole.USER)
                 .build();
