@@ -40,7 +40,8 @@ public class VoenmehUser implements UserDetails {
     private Set<VoenmehFile> usersFiles = new HashSet<>();
 
     @CreatedDate
-    @Column(name = "craetionDateTime",nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "craetionDateTime")
     private Date creationDateTime;
 
     @Enumerated(EnumType.STRING)

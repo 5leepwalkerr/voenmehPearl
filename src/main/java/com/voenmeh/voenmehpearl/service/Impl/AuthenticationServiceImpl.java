@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.management.relation.Role;
+import java.util.Date;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
@@ -29,10 +30,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public JwtAuthenticationResponse signUp(SignUpRequest request) {
         var user = VoenmehUser.builder()
-                .userName(request.getUserName())
                 .email(request.getEmail())
+                .userName(request.getUserName())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .userRole(VoenmehRole.USER)
+                .creationDateTime(new Date())
                 .build();
         voenmehUserRepository.save(user);
         var jwt = jwtService.generateToken(user);
