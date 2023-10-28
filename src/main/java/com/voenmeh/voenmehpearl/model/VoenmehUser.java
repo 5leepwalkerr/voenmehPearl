@@ -22,8 +22,8 @@ public class VoenmehUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userId",nullable = false)
     private Long userId;
-    @Column(name = "userName",nullable = false,unique = true)
-    private String userName;
+    @Column(name = "username",nullable = false,unique = true)
+    private String username;
 
     @Column(name = "email",nullable = false,unique = true)
     private String email;
@@ -56,12 +56,12 @@ public class VoenmehUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return username;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
