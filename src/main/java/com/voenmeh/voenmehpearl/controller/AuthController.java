@@ -25,12 +25,7 @@ public class AuthController {
         return ResponseEntity.ok(authenticationService.signUp(request));
     }
     @PostMapping("/signin")
-    public ResponseEntity<?> signin(@RequestBody SignInRequest request){
+    public ResponseEntity<JwtAuthenticationResponse> signin(@RequestBody SignInRequest request){
         return ResponseEntity.ok(authenticationService.signIn(request));
-    }
-    @PostMapping("/test")
-    public ResponseEntity<?> test(@RequestBody VoenmehUser user){
-        repository.save(user);
-        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
